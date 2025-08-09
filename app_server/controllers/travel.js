@@ -16,12 +16,12 @@ const options = {
 const travel = async function (req, res, next) {
     //console.log('TRAVEL CONTROLLER BEGIN)
     await fetch(tripsEndpoint, options)
-        .then((res) => res.json())
+        .then((fetchRes) => fetchRes.json())
         .then((json) => {
             let message = null;
             if(!(json instanceof Array)){
                 message = "API lookup error";
-                json[];
+                json = []
             } else {
                 if (!json.length) {
                     message = "No trips exist in our database!";
