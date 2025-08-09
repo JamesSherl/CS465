@@ -24,7 +24,7 @@ export class TripDataService {
 
   }
   
-  getTrip(tripCode: string) : Observable<Trip> {
+  getTrip(tripCode: string) : Observable<Trip[]> {
     return this.http.get<Trip[]>(this.url + '/' + tripCode);
   }
 

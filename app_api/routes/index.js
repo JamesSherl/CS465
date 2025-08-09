@@ -8,7 +8,7 @@ router.route("/trips").get(tripsController.tripsList);
 router 
     .route('/trips')
     .get(tripsController.tripsList)
-    .post(travelController.tripsAddTrip); //PoOST method adds trip
+    .post(tripsController.tripsAddTrip); //PoOST method adds trip
    
 
 router 
