@@ -60,6 +60,7 @@ const tripsAddTrip = async(req, res) => {
     });
 
     const q = await newTrip.save();
+    
             if(!q)
         { //Database returns no data
             return res
@@ -101,7 +102,7 @@ const tripsUpdateTrip = async (req, res) => {
 
   } catch (err) {
    
-    return res.status(500).json(q);
+    return res.status(500).json(err);
   }
 };
 

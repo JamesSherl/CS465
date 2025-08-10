@@ -1,0 +1,19 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-text {
+  flex-grow: 1; /* Pushes button down if text is short */
+}
+
+.btn {
+  align-self: flex-start; /* Keeps button aligned to the left inside the body */
+}

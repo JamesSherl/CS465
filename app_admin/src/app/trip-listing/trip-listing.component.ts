@@ -52,4 +52,5 @@ ngOnInit(): void {
   console.log('ngOnInit');
   this.getStuff();
   }
+
 }

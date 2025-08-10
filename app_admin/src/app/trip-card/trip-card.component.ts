@@ -11,19 +11,19 @@ import { Trip } from '../models/trip';
   templateUrl: './trip-card.component.html',
   styleUrl: './trip-card.component.css'
 })
-export class TripCardComponent implements OnInit{
+export class TripCardComponent implements OnInit {
 
-  @Input('trip') trip: any;
+  @Input('trip') trip: any;  // Accepting trip as input from parent component
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-      
+    
   }
 
-  public editTrip(trip: Trip) {
-    localStorage.removeItem('tripCode');
-    localStorage.setItem('tripCode', trip.code);
-    this.router.navigate(['edit-trip']);
-  }
+ public editTrip(trip: Trip) {
+  localStorage.removeItem('tripCode');
+  localStorage.setItem('tripCode', trip.code);
+  this.router.navigate(['edit-trip']);
+ }
 }
