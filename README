@@ -1,0 +1,4 @@
+In this project, multiple different front end solutions were done, such as express and SPA. Express HTML is structured to where everything has some sort of hand in everything else. SPA is seperated based upon things like services and components. 
+
+The backend used MongoDB because it is easier for a non SQL db to be used in the scenario we have found ourselves in. NoSQL Db's have an easier time sharding than SQL databases, and the information is a lot easier to change at all times compared to SQL.
+
