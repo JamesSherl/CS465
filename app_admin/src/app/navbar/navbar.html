@@ -7,18 +7,29 @@ aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span> 
     </button> 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> 
-        <div class="navbar-nav"> 
-            <a class="nav-link active" routerLink="">Trips<span class=" 
-sr-only ">(current)</span></a> 
-        </div> 
+    <div >
+      <div class="d-flex flex-wrap gap-7 py-5"> 
+        <a class="btn btn-primary btn-lg px-4 fw-bold">Travel</a>
+        <a class="btn btn-primary btn-lg px-4 fw-bold">News</a>
+        <a *ngIf="isLoggedIn()" class="btn btn-primary btn-lg px-4 fw-bold">Reservation</a>
+        <a class="btn btn-primary btn-lg px-4 fw-bold">Admin</a>
+        <a class="btn btn-primary btn-lg px-4 fw-bold">Checkout</a>
+                <button class="btn btn-success btn-lg px-4 fw-bold" 
+                routerLink="login" 
+                *ngIf="!isLoggedIn()">
+            Log In
+        </button>
+
+        <!-- Log Out button -->
+        <button class="btn btn-danger btn-lg px-4 fw-bold" 
+                (click)="onLogout()" 
+                *ngIf="isLoggedIn()">
+            Log Out
+        </button>
+    </div>
+    </div>
+    
+    
     </div> 
-    <div class="navbar-end "> 
-        <a class="nav-item" routerLink="login" *ngIf="!isLoggedIn()"> 
-            <span class="has-icon-left">Log In</span> 
-        </a> 
-        <a class="nav-item active" (click)="onLogout()" 
-*ngIf="isLoggedIn()"> 
-            <span class="has-icon-left ">Log Out</span> 
-        </a> 
-    </div> 
+    
  </nav> 

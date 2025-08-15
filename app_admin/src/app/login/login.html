@@ -1,30 +1,96 @@
-<div class="row"> 
-    <div class="col-12 col-md-8"> 
-        <h2>Login</h2> 
-        <form (ngSubmit)="onLoginSubmit()"> 
-            <div role="alert" *ngIf="formError" class="alert alert-danger"> 
-                {{ formError }} 
-            </div> 
-            <div class="form-group"> 
-                <label for="name">Name</label> 
-                <input type="text" name="name" placeholder="Enter Name"  
-                    [(ngModel)]="credentials.name">
-                     </div> 
-            <div class="form-group"> 
-                <label for="email">Email Address</label> 
-                <input type="email" name="email"  
-                    placeholder="Enter email address"  
-                    [(ngModel)]="credentials.email"> 
-            </div> 
-            <div class="form-group"> 
-                <label for="password">Password</label> 
-                <input type="password" class="form-control" id="password"  
-                    name="password" placeholder="e.g 12+ alphanumerics"  
-                    [(ngModel)]="credentials.password"> 
-            </div> 
-            <button type="submit" role="button" class="btn btn-primary"> 
-                Sign In! 
-            </button> 
-        </form> 
-    </div> 
- </div> 
+<div class="card p-4" style="max-width: 520px; margin: 2rem auto;">
+  <!-- Header -->
+  <h2 class="mb-4">{{ mode === 'login' ? 'Login' : 'Sign Up' }}</h2>
+
+  <!-- Mode Switch -->
+  <div class="d-flex gap-3 mb-3">
+    <button type="button"
+            class="btn"
+            [class.btn-outline-primary]="mode !== 'login'"
+            [class.btn-primary]="mode === 'login'"
+            (click)="setMode('login')">
+      Login
+    </button>
+    <button type="button"
+            class="btn"
+            [class.btn-outline-primary]="mode !== 'register'"
+            [class.btn-primary]="mode === 'register'"
+            (click)="setMode('register')">
+      Create Account
+    </button>
+  </div>
+
+  <!-- Form -->
+  <form (ngSubmit)="onSubmit()">
+    <div class="alert alert-danger" *ngIf="formError">{{ formError }}</div>
+
+    <!-- Name (register only) -->
+    <div class="mb-3" *ngIf="mode === 'register'">
+      <label for="name" class="form-label">* Name:</label>
+      <input id="name"
+             class="form-control"
+             [(ngModel)]="credentials.name"
+             name="name"
+             autocomplete="name">
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">{{ mode === 'register' ? '* Email:' : 'Email:' }}</label>
+      <input id="email"
+             type="email"
+             class="form-control"
+             [(ngModel)]="credentials.email"
+             name="email"
+             autocomplete="email">
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="password" class="form-label">{{ mode === 'register' ? '* Password:' : 'Password:' }}</label>
+      <input id="password"
+             type="password"
+             class="form-control"
+             [(ngModel)]="credentials.password"
+             name="password"
+             autocomplete="{{ mode === 'login' ? 'current-password' : 'new-password' }}">
+    </div>
+
+    <!-- Confirm Password (register only) -->
+    <div class="mb-3" *ngIf="mode === 'register'">
+      <label for="confirmPassword" class="form-label">* Re-type password:</label>
+      <input id="confirmPassword"
+             type="password"
+             class="form-control"
+             [(ngModel)]="confirmPassword"
+             name="confirmPassword"
+             autocomplete="new-password">
+    </div>
+
+    <!-- Terms (register only) -->
+    <div class="form-check mb-3" *ngIf="mode === 'register'">
+      <input id="terms"
+             type="checkbox"
+             class="form-check-input"
+             [(ngModel)]="agreedToTerms"
+             name="terms">
+      <label for="terms" class="form-check-label">
+        I agree to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+      </label>
+    </div>
+
+    <!-- Actions -->
+    <div class="d-flex align-items-center">
+      <button class="btn btn-primary me-3" type="submit">
+        {{ mode === 'login' ? 'Login' : 'Sign up' }}
+      </button>
+
+      <!-- Keep this link present; no functionality change required -->
+      <a href="#" *ngIf="mode === 'login'">Forgot password?</a>
+      <a href="#" *ngIf="mode === 'register'">Learn more</a>
+    </div>
+  </form>
+</div>
+
+
+

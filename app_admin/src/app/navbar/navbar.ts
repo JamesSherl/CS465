@@ -27,4 +27,5 @@ export class Navbar implements OnInit {
   public onLogout(): void { 
     return this.authenticationService.logout(); 
   } 
+
  } 
